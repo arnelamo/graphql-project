@@ -74,7 +74,7 @@ console.log('book', book)
 
   return (
     <form className={classes.root} onSubmit={submitForm}>
-      <div>
+      <div id="form-fields">
         <TextField
           variant="outlined"
           size="small"
@@ -106,7 +106,7 @@ console.log('book', book)
           {authorsList}
         </TextField>
       </div>
-      <button>+</button>
+      <button>ADD BOOK</button>
     </form>
   )
 }

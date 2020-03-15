@@ -14,7 +14,7 @@ const { GraphQLObjectType,
 /* Here we define our first Object type */
 const BookType = new GraphQLObjectType({
   name: 'Book',
-    fields: () => ({ // GraphQL Tutorial #7 - 6:00
+    fields: () => ({ 
       id: { type: GraphQLID },
       name: { type: GraphQLString },
       genre: { type: GraphQLString },

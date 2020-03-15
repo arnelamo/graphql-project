@@ -1,6 +1,5 @@
 
 const Reducer = (state, action) => {
-  console.log('HERE')
   switch (action.type) {
     case 'ADD':
       return {

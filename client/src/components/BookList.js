@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { getBooksQuery } from '../queries/queries'
 
@@ -8,9 +8,7 @@ const BookList = () => {
   const [selectedBookId, setSelectedBookId] = useState(null)
   const { loading, error, data } = useQuery(getBooksQuery)
 
-  useEffect(() => {
 
-  })
 
   if (loading) return 'Loading...';
   if (error) return `BookList Error! ${error.message}`

@@ -47,7 +47,7 @@ const BookDetails = ({ bookId }) => {
           <ul>
             {list}
           </ul>
-          <button id="delete-book-button" onClick={() => handleDelete(book.id)}>-</button>
+          <button id="delete-book-button" onClick={() => handleDelete(book.id)}>DELETE</button>
         </>
       )
     } else {
