@@ -46,9 +46,19 @@ query($id: ID!) {
 }
 `
 
+const deleteBookMutation = gql`
+  mutation ($id: ID!){
+    deleteBook(id: $id){
+      name
+      id
+    }
+  }
+`
+
 export {
   getBooksQuery,
   getAuthorsQuery,
   addBookMutation,
-  getBookQuery
+  getBookQuery,
+  deleteBookMutation
 }
