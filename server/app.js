@@ -4,8 +4,13 @@ const graphqlHTTP = require('express-graphql')
 const schema = require('./schema/schema')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const path = require('path')
+
+// import files
 const url = require('./config')
 
+// defining global variables
+const port = process.env.PORT || 4000
 const app = express()
 
 // allow cross-origin requests. Basically, allowing other servers to request data from our express server
@@ -29,6 +34,15 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }))
 
-app.listen(4000, () => {
-    console.log('now listening for requests on port 4000')
+// Check if in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(__dirname + '/../client/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+  })
+}
+
+app.listen(port, () => {
+    console.log('now listening for requests on port' +port)
 })
