@@ -17,7 +17,7 @@ const app = express()
 app.use(cors())
 
 // Connect to mongoose db. Replace the url with your own. mLab (MongoDB) is a good option.
-mongoose.connect(url)
+mongoose.connect(process.env.MONGODB_URI || url)
 // connection.once() is a event listener, that fires a callback (second arg) when connection is 'open'
 mongoose.connection.once('open', () => {
   console.log('Connected to database')
