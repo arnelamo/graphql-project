@@ -3,10 +3,12 @@ import Reducer from './Reducer'
 
 const initialState = {
   currentBook: {
+    bookId: '',
     name: '',
     genre: '',
     authorId: ''
-  }
+  },
+  operation: ''
 }
 
 const Store = ({ children }) => {

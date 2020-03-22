@@ -8,14 +8,14 @@ body {
 }
 
 #main h1 {
-  color: #444;
+  color: #1A1B25;
   text-align: center;
 }
 
 #main {
   padding: 0;
   box-sizing: border-box;
-  width: 60%;
+  width: 50%;
   height: 100%;
 }
 
@@ -37,15 +37,17 @@ body {
 
 form {
   background: #fff;
-  padding: 20px;
+  /* padding: 20px; */
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 50%;
 }
 
 #form-fields {
   width: 400px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 form.field {
@@ -74,21 +76,36 @@ form button {
   cursor: pointer;
   font-weight: bold;
   padding: 8px 16px;
-  margin-top: 24px;
+  margin: 24px 0 20px 28px;
+
 }
 
 #book-details {
   position: fixed;
   top: 0;
   right: 0;
-  width: 40%;
-  height: 100%;
+  width: 50%;
+  height: 60%;
   background: #AD1457;
   padding: 30px;
   overflow: auto;
   box-shadow: -2px -3px -5px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   color: #fff;
+}
+
+#console {
+  width: 50%;
+  background: #1A1B25;
+  position: fixed;
+  height: 40%;
+  bottom: 0;
+  right: 0;
+}
+
+#console-data {
+  color: white;
+  padding: 20px;
 }
 
 #delete-book-button {
@@ -99,5 +116,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
   padding: 4px 8px;
+  font-weight: bold;
+  padding: 8px 16px;
   margin-top: 16px;
 }

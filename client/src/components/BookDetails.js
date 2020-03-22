@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { Context } from '../store/Store'
+
 import { useLazyQuery, useMutation } from '@apollo/react-hooks'
 import { getBookQuery, getBooksQuery, deleteBookMutation } from '../queries/queries'
+import { getBookActions, deleteBookActions } from '../store/actionCreators'
 
 const BookDetails = ({ bookId }) => {
   
   const [removeBook, setRemoveBook] = useState(false)
+  const [state, dispatch] = useContext(Context)
   const [getBook, { loading, error, data }] = useLazyQuery(getBookQuery, {
     variables: { id: bookId }
   })
@@ -12,6 +16,7 @@ const BookDetails = ({ bookId }) => {
 
   useEffect(() => {
     bookId && getBook({ variables: { id: bookId }})
+    bookId && getBookActions(bookId, dispatch)
     setRemoveBook(false)
   }, [setRemoveBook, bookId, getBook])
 
@@ -20,6 +25,7 @@ const BookDetails = ({ bookId }) => {
 
   const handleDelete = (id) => {
     setRemoveBook(true)
+    deleteBookActions(id, dispatch)
     mutate({
       variables: {
         id: id 
@@ -40,14 +46,14 @@ const BookDetails = ({ bookId }) => {
 
       return (
         <>
-          <h2>{book.name}</h2>
-          <p>{book.genre}</p>
-          <p>{author.name}</p>
+          <h2>Title: "{book.name}"</h2>
+          <p><i>{book.genre}</i></p>
+          <p>Author: {author.name}</p>
           <p>All books by this author:</p>
           <ul>
             {list}
           </ul>
-          <button id="delete-book-button" onClick={() => handleDelete(book.id)}>DELETE</button>
+          <button id="delete-book-button" onClick={() => handleDelete(book.id)}>DELETE BOOK</button>
         </>
       )
     } else {
@@ -56,8 +62,10 @@ const BookDetails = ({ bookId }) => {
   }
 
   return (
-    <div id="book-details">
-      {renderContent()}
+    <div id="right-side">
+      <div id="book-details">
+        {renderContent()}
+      </div>
     </div>
   )
 }

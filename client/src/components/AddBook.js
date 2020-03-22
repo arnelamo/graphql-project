@@ -3,8 +3,9 @@ import { Context } from '../store/Store'
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../queries/queries'
-import { makeStyles } from '@material-ui/core/styles';
+import { addBookActions } from '../store/actionCreators'
 
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 
@@ -38,18 +39,14 @@ const AuthorsList = () => {
   const handleChange = (e) => {
     setBook({...book, [e.target.name]: e.target.value})
   }
-console.log('global State', state)
-console.log('book', book)
+  
+console.log('AddBook State', state)
+console.log('AddBook local State', book)
+
   const submitForm = (e) => {
     e.preventDefault()
-    dispatch({ 
-      type: 'ADD',
-      payload: {
-        name: book.name,
-        genre: book.genre,
-        authorId: book.authorId
-      }
-    })
+    // Using our custom actioncreator to update state
+    addBookActions(book, dispatch)
     mutate({
       // The variables option is an object that contains all of the variables we want to pass to our GraphQL query
       variables: {
