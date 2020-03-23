@@ -18,7 +18,10 @@ app.use(cors())
 
 // Connect to mongoose db. Replace the url with your own. mLab (MongoDB) is a good option.
 // mongoose.connect(process.env.MONGODB_URI || url)
-mongoose.connect(db)
+mongoose.connect(db, { useNewUrlParser: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err))
+  
 // connection.once() is a event listener, that fires a callback (second arg) when connection is 'open'
 mongoose.connection.once('open', () => {
   console.log('Connected to database')
