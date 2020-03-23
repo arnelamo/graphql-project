@@ -6,8 +6,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const path = require('path')
 
-// import files
-const url = require('./config')
+// DB config
+const db = require('./config/keys').mongoURI
 
 // defining global variables
 const port = process.env.PORT || 4000
@@ -18,7 +18,7 @@ app.use(cors())
 
 // Connect to mongoose db. Replace the url with your own. mLab (MongoDB) is a good option.
 // mongoose.connect(process.env.MONGODB_URI || url)
-mongoose.connect(url)
+mongoose.connect(db)
 // connection.once() is a event listener, that fires a callback (second arg) when connection is 'open'
 mongoose.connection.once('open', () => {
   console.log('Connected to database')
