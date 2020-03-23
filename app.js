@@ -21,7 +21,7 @@ app.use(cors())
 mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err))
-  
+
 // connection.once() is a event listener, that fires a callback (second arg) when connection is 'open'
 mongoose.connection.once('open', () => {
   console.log('Connected to database')
@@ -40,7 +40,7 @@ app.use('/graphql', graphqlHTTP({
 
 // Check if in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('/client/build'))
+  app.use(express.static('./client/build'))
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
