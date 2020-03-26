@@ -1,19 +1,16 @@
-export const getLinesAndSpaces = (part) => {
-  const regEx = /02/g
-  const number = part.match(regEx).length * 2
-  const line = part.replace(regEx, "")
-  let spaces = ""
-  for (let i=0; i < number; i++) {
-    spaces = spaces.concat(" ")
+export const updateState = (state, values) => {
+  return {
+    ...state,
+    currentBook: values.bookDetails,
+    operation: values.operationType
   }
-  return [line, spaces]
 }
 
 export const findString = (currentBook, operation) => {
   const queries = {
   addBook: `
   mutation {
-    addBook(name: ${currentBook.name}, genre: ${currentBook.genre}, authorId: ${currentBook.authorId}) {
+    addBook(name: "${currentBook.name}", genre: "${currentBook.genre}", authorId: "${currentBook.authorId}") {
       name
       id
     }
@@ -21,7 +18,7 @@ export const findString = (currentBook, operation) => {
   `,
   getBook: `
   query {
-    book(id: ${currentBook.bookId}) {
+    book(id: "${currentBook.bookId}") {
       id
       name
       genre
@@ -39,7 +36,7 @@ export const findString = (currentBook, operation) => {
   `,
   deleteBook: `
   mutation {
-    deleteBook(id: ${currentBook.bookId}){
+    deleteBook(id: "${currentBook.bookId}"){
       name
       id
     }

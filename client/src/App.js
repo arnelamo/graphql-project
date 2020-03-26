@@ -15,15 +15,10 @@ const client = new ApolloClient({
 const  App = () => {
   return (
     <ApolloProvider client={client}>
-      <Store>
-        <div id="main">
-          <h1>GraphQL Playground</h1>
-          <BookList/>
-          <AddBook/> 
-        </div>
-        <div id="console">
+      <Store>      
+        <BookList/>
+        <AddBook/> 
         <Console />
-      </div>
       </Store>
     </ApolloProvider>
   );

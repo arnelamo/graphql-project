@@ -95,15 +95,13 @@ form button {
 }
 
 #console {
+  box-sizing: border-box;
   width: 50%;
   background: #1A1B25;
   position: fixed;
   height: 40%;
   bottom: 0;
   right: 0;
-}
-
-#console-data {
   color: white;
   padding: 20px;
 }
