@@ -7,7 +7,7 @@ const cors = require('cors')
 const path = require('path')
 
 // DB config
-const db = require('./config/keys').mongoURI
+const db = process.env.MONGODB_URI || require('./config/keys').mongoURI
 
 // defining global variables
 const port = process.env.PORT || 4000

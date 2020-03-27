@@ -8,8 +8,15 @@ import BookList from './components/BookList'
 import AddBook from './components/AddBook'
 import Console from './components/Console'
 
+if (process.env.NODE_ENV === 'development') {
+  console.log('development')
+} else {
+  console.log('prod')
+}
+
+const url = 'http://localhost:4000/graphql'
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: url
 })
 
 const  App = () => {
