@@ -8,13 +8,14 @@ import BookList from './components/BookList'
 import AddBook from './components/AddBook'
 import Console from './components/Console'
 
+let url
 if (process.env.NODE_ENV === 'development') {
-  console.log('development')
+  url = 'http://localhost:4000/graphql'
 } else {
-  console.log('prod')
+  url = 'mongodb://Bob2:Test123@ds137863.mlab.com:37863/heroku_ctnfnnqv'
 }
 
-const url = 'http://localhost:4000/graphql'
+
 const client = new ApolloClient({
   uri: url
 })
