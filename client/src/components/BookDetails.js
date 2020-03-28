@@ -20,7 +20,7 @@ const BookDetails = ({ bookId }) => {
     setRemoveBook(false)
   }, [setRemoveBook, bookId, getBook, dispatch])
 
-  if (loading) return 'Loading...';
+  if (loading) return <div id="spinner"></div>
   if (error) return `BookList Error! ${error.message}`
 
   const handleDelete = (id) => {
@@ -64,8 +64,7 @@ const BookDetails = ({ bookId }) => {
   }
 
   return (
-
-      <div id="book-details">
+      <div>
         {renderContent()}
       </div>
   )

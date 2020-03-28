@@ -48,5 +48,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => {
-    console.log('now listening for requests on port' +port)
+    console.log('now listening for requests on port ' + port)
 })

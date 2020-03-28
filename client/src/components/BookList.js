@@ -21,7 +21,9 @@ const BookList = () => {
       <ul id="book-list">
         {updatedList}
       </ul>
-      <BookDetails bookId={selectedBookId}/>
+      <div id="book-details">
+        <BookDetails bookId={selectedBookId}/>
+      </div>
     </div>
   )
 }
