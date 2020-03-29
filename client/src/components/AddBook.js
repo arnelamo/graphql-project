@@ -70,6 +70,8 @@ const AuthorsList = () => {
     <form className={classes.root} onSubmit={submitForm}>
       <div id="form-fields">
         <TextField
+          autoFocus="true"
+          required="true"
           variant="outlined"
           size="small"
           label="Title"
@@ -79,6 +81,7 @@ const AuthorsList = () => {
           value={book.name}
         />
         <TextField
+          required="true"
           variant="outlined"
           size="small"
           label="Genre"
@@ -89,6 +92,7 @@ const AuthorsList = () => {
         />
         <TextField
           select
+          required="true"
           variant="outlined"
           size="small"
           label="Author"
